@@ -1,0 +1,4 @@
+entityNamespace: "LotGD\\Modules\\SceneEditor\\"
+subscriptionPatterns:
+daenerysCommands:
+    - "ScenesCommand"
