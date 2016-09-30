@@ -6,13 +6,17 @@ namespace LotGD\Modules\SceneEditor;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-abstract class SceneEditorCommand {
-    private $g;
+use LotGD\Core\Game;
 
-    public function __constructor(Game $g)
+abstract class SceneEditorCommand {
+    protected $command;
+    protected $g;
+
+    public function __construct(ScenesCommand $command, Game $g)
     {
+        $this->command = $command;
         $this->g = $g;
     }
 
-    abstract public function execute(InputInterface $input, OutputInterface $output);
+    abstract public function execute(InputInterface $input, OutputInterface $output, array $argv);
 }
