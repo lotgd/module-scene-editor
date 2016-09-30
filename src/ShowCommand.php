@@ -20,7 +20,7 @@ class ShowCommand extends SceneEditorCommand {
         $scene = $this->g->getEntityManager()->getRepository(Scene::class)->find($id);
 
         if ($scene) {
-            $this->command->printScenes([$scene], true);
+            $this->command->printScenes($output, [$scene], true);
         } else {
             $output->writeln("<error>show: no scene with id=$id</error>");
         }
@@ -34,7 +34,7 @@ class ShowCommand extends SceneEditorCommand {
 
         if (count($scenes) > 0) {
             $output->writeln("<fg=green>Scenes with template=$template:</>");
-            $this->command->printScenes($scenes, true);
+            $this->command->printScenes($output, $scenes, true);
         } else {
             $output->writeln("<error>show: no scenes with template=$template</error>");
         }
@@ -45,7 +45,7 @@ class ShowCommand extends SceneEditorCommand {
         if (count($argv) == 1) {
             $this->showAllScenes($output);
         } else if (count($argv) == 2) {
-            if (is_numeric($argv[1]) && is_int($argv[1])) {
+            if (is_numeric($argv[1]) && is_int(0 + $argv[1])) {
                 $this->showSceneWithId($output, $argv[1]);
             } else {
                 $this->showScenesWithTemplate($output, $argv[1]);

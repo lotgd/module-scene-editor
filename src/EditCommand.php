@@ -31,7 +31,7 @@ class EditCommand extends SceneEditorCommand {
             return;
         }
 
-        $this->command->printScenes([$scene], true);
+        $this->command->printScenes($output, [$scene], true);
         $output->writeln("");
 
         $whichQuestion = new ChoiceQuestion(
@@ -59,10 +59,11 @@ class EditCommand extends SceneEditorCommand {
                     break;
             }
         }
+        $output->writeln("");
 
         $scene->save($this->g->getEntityManager());
         $output->writeln("<fg=green>Edited scene id=$id:</>");
-        $this->command->printScenes([$scene], true);
+        $this->command->printScenes($output, [$scene], true);
         $output->write("");
     }
 }

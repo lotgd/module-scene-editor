@@ -48,6 +48,8 @@ class ScenesCommand extends BaseCommand {
 
             if ($s->hasParent()) {
                 array_push($row, $s->getParent()->getId());
+            } else {
+                array_push($row, '');
             }
 
             if ($s->hasChildren()) {
@@ -57,6 +59,8 @@ class ScenesCommand extends BaseCommand {
                     $children .= $c->getId() . (($index == $count - 1) ? "" : ",");
                 }
                 array_push($row, $children);
+            } else {
+                array_push($row, '');
             }
 
             if ($includeDescription) {
